@@ -1,1 +1,52 @@
-{"destination": [{"id": 1, "name": "Warung Bigul Pak Malen", "category": "Restaurant", "duration": 1}, {"id": 2, "name": "Atlas Beach Club", "type": "Beach Club", "duration": 8.5}, {"id": 3, "name": "Waterbom Bali", "category": "Waterpark", "duration": 6.0}]}
+{
+    "destination": [
+        {
+            "destination_id": 1,
+            "name": "Warung Bigul Pak Malen",
+            "category": "Restaurant",
+            "location": "Seminyak, Bali"
+        },
+        {
+            "destination_id": 2,
+            "name": "Atlas Beach Club",
+            "category": "Beach Club",
+            "location": "Canggu, Bali"
+        },
+        {
+            "destination_id": 3,
+            "name": "Waterbom Bali",
+            "category": "Waterpark",
+            "location": "Kuta, Bali"
+        },
+        {
+            "destination_id": 4,
+            "name": "ATV Bali",
+            "category": "Adventure",
+            "location": "Ubud, Bali"
+        },
+        {
+            "destination_id": 5,
+            "name": "Potato Head Bali",
+            "category": "Beach Club",
+            "location": "Seminyak, Bali"
+        },
+        {
+            "destination_id": 6,
+            "name": "Pantai Kuta",
+            "category": "Pantai",
+            "location": "Kuta, Bali"
+        },
+        {
+            "destination_id": 7,
+            "name": "Pantai Melasti",
+            "category": "Pantai",
+            "location": "Ungasan, Bali"
+        },
+        {
+            "destination_id": 8,
+            "name": "Beachwalk Shopping Center",
+            "category": "Mall",
+            "location": "Kuta, Bali"
+        }
+    ]
+}
