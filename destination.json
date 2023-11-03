@@ -1,5 +1,1 @@
-{"destination": [
-	{"id":1, "name":"Warung Bigul Pak Malen", "category":"Restaurant"},
-	{"id":2, "name":"Atlas Beach Club", "type":"Beach Club"}
-]
-}
+{"destination": [{"id": 1, "name": "Warung Bigul Pak Malen", "category": "Restaurant", "duration": 1}, {"id": 2, "name": "Atlas Beach Club", "type": "Beach Club", "duration": 8.5}, {"id": 3, "name": "Waterbom Bali", "category": "Waterpark", "duration": 6.0}]}
