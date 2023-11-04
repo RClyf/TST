@@ -23,7 +23,7 @@
         },
         {
             "id": 2,
-            "user_id": "23456",
+            "user_id": "12345",
             "start_date": "2023-11-21",
             "end_date": "2023-11-25",
             "accommodation": "Hotel Grand Ina Bali",
@@ -38,7 +38,7 @@
         },
         {
             "id": 3,
-            "user_id": "53421",
+            "user_id": "23456",
             "start_date": "2023-11-21",
             "end_date": "2023-11-24",
             "accommodation": "Hotel Hard Rock Bali",

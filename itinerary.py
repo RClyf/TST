@@ -42,8 +42,28 @@ async def read_destination(destination_id: int):
 		if destination_item['destination_id'] == destination_id:
 			return destination_item
 	raise HTTPException(
-		status_code=404, detail=f'destination not found'
+		status_code=404, detail=f'Destination not found'
 	)
+
+@app.get('/destination/category/{category}')
+async def read_destination_category(category: str):
+	matching_destinations = [destination_item for destination_item in data['destination'] if destination_item['category'] == category]
+	if matching_destinations:
+		return matching_destinations
+	raise HTTPException(
+		status_code=404, detail=f'Category not found'
+	)
+
+@app.get('/destination/location/{location}')
+async def read_destination_location(location: str):
+	matching_destinations = [destination_item for destination_item in data['destination'] if destination_item['location'] == location]
+	if matching_destinations:
+		return matching_destinations
+	raise HTTPException(
+		status_code=404, detail=f'Location not found'
+	)
+
+
 
 @app.post('/destination')
 async def add_destination(dest: Destination):
@@ -116,12 +136,13 @@ async def read_itinerary(itinerary_id: int):
         
 @app.get('/itinerary/user/{user_id}')
 async def read_itinerary(user_id: str):
-    for itinerary_item in data1['itinerary']:
-        if itinerary_item['user_id'] == user_id:
-            return itinerary_item
+    matching_users_itinerary = [itinerary_item for itinerary_item in data1['itinerary'] if itinerary_item['user_id'] == user_id]
+    if matching_users_itinerary:
+        return matching_users_itinerary
     raise HTTPException(
-    status_code=404, detail=f'Itinerary not found'
+		status_code=404, detail=f'Itinerary not found'
 	)
+	
 
 @app.post('/itinerary')
 async def create_itinerary(itinerary: Itinerary):
