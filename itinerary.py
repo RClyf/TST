@@ -45,6 +45,15 @@ async def read_destination(destination_id: int):
 		status_code=404, detail=f'Destination not found'
 	)
 
+@app.get('/destination/name/{name}')
+async def read_destination_name(name: str):
+	matching_destinations = [destination_item for destination_item in data['destination'] if name.lower() in destination_item['name'].lower()]
+	if matching_destinations:
+		return matching_destinations
+	raise HTTPException(
+		status_code=404, detail=f'Destination not found'
+	)
+
 @app.get('/destination/category/{category}')
 async def read_destination_category(category: str):
 	matching_destinations = [destination_item for destination_item in data['destination'] if destination_item['category'] == category]
