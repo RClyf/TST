@@ -30,7 +30,7 @@ with open(json_filename1,"r") as read_file:
 	data1 = json.load(read_file)
 
 # JWT token authentication
-ADMIN = "admin123"
+ADMIN = "Admin123"
 SECRET_KEY = "ayokebali-TST"
 ALGORITHM = "HS256"
 
@@ -52,14 +52,19 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
 
     return user_id
 
-app = FastAPI(dependencies=[Depends(get_current_user)])
+app = FastAPI()
 
+@app.get('/token/{user_id}')
+async def return_token(user_id: str):
+    token_data = {"sub": user_id}
+    token = jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)
+    return {"token": token}
 
-@app.get('/destination')
+@app.get('/destination', dependencies=[Depends(get_current_user)])
 async def read_all_destination():
 	return data['destination']
 
-@app.get('/destination/{destination_id}')
+@app.get('/destination/{destination_id}', dependencies=[Depends(get_current_user)])
 async def read_destination(destination_id: int,):
 	for destination_item in data['destination']:
 		print(destination_item)
@@ -69,7 +74,7 @@ async def read_destination(destination_id: int,):
 		status_code=404, detail=f'Destination not found'
 	)
 
-@app.get('/destination/name/{name}')
+@app.get('/destination/name/{name}', dependencies=[Depends(get_current_user)])
 async def read_destination_name(name: str):
 	matching_destinations = [destination_item for destination_item in data['destination'] if name.lower() in destination_item['name'].lower()]
 	if matching_destinations:
@@ -78,7 +83,7 @@ async def read_destination_name(name: str):
 		status_code=404, detail=f'Destination not found'
 	)
 
-@app.get('/destination/category/{category}')
+@app.get('/destination/category/{category}', dependencies=[Depends(get_current_user)])
 async def read_destination_category(category: str):
 	matching_destinations = [destination_item for destination_item in data['destination'] if destination_item['category'] == category]
 	if matching_destinations:
@@ -87,7 +92,7 @@ async def read_destination_category(category: str):
 		status_code=404, detail=f'Category not found'
 	)
 
-@app.get('/destination/location/{location}')
+@app.get('/destination/location/{location}', dependencies=[Depends(get_current_user)])
 async def read_destination_location(location: str):
 	matching_destinations = [destination_item for destination_item in data['destination'] if destination_item['location'] == location]
 	if matching_destinations:
@@ -95,8 +100,6 @@ async def read_destination_location(location: str):
 	raise HTTPException(
 		status_code=404, detail=f'Location not found'
 	)
-
-
 
 @app.post('/destination')
 async def add_destination(dest: Destination, current_user: str = Depends(get_current_user)):
@@ -167,18 +170,23 @@ async def delete_destination(destination_id: int, current_user: str = Depends(ge
 		status_code=404, detail=f'Destination not found'
 	)
 
-@app.get('/itinerary')
+@app.get('/itinerary', dependencies=[Depends(get_current_user)])
 async def read_all_itinerary():
     return data1['itinerary']
 
 @app.get('/itinerary/{itinerary_id}')
-async def read_itinerary(itinerary_id: int):
+async def read_itinerary(itinerary_id: int, current_user: str = Depends(get_current_user)):
     for itinerary_item in data1['itinerary']:
         if itinerary_item['id'] == itinerary_id:
+            if itinerary_item['user_id'] != current_user:
+                raise HTTPException(
+                    status_code=status.HTTP_403_FORBIDDEN,
+                    detail="Itinerary ini bukan milik Anda",
+                )
             return itinerary_item
     raise HTTPException(
     status_code=404, detail=f'Itinerary not found'
-	)
+    )
         
 @app.get('/itinerary/user/{user_id}')
 async def read_itinerary(user_id: str, current_user: str = Depends(get_current_user)):
