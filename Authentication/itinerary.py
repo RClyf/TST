@@ -4,6 +4,7 @@ from jose import JWTError, jwt
 from pydantic import BaseModel
 import json
 from typing import List, Optional
+from passlib.context import CryptContext
 
 class Destination(BaseModel):
     destination_id: int
@@ -18,6 +19,10 @@ class Itinerary(BaseModel):
     end_date: str
     accommodation: str
     destination: List[Destination]
+    
+class User(BaseModel):
+    user_id: str
+    password: str
 
 json_filename="destination.json"
 
@@ -28,6 +33,11 @@ json_filename1="itinerary.json"
 
 with open(json_filename1,"r") as read_file:
 	data1 = json.load(read_file)
+
+json_filename2="user.json"
+
+with open(json_filename2,"r") as read_file:
+	data2 = json.load(read_file)
 
 # JWT token authentication
 ADMIN = "Admin123"
@@ -52,7 +62,49 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
 
     return user_id
 
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+def hash_password(password: str):
+    return pwd_context.hash(password)
+
+def verify_password(plain_password, hashed_password):
+    return pwd_context.verify(plain_password, hashed_password)
+
 app = FastAPI()
+
+@app.post('/register')
+async def register(user:User):
+    user_dict = user.dict()
+    user_found = False
+    for user_item in data2['user']:
+        if user_item['user_id'] == user_dict['user_id']:
+            user_found = True
+            return "User ID "+str(user_dict['user_id'])+" exists."
+    
+    if not user_found:
+        user_dict['password'] = hash_password(user_dict['password'])
+        data2['user'].append(user_dict)
+        with open(json_filename2,"w") as write_file:
+            json.dump(data2, write_file)
+            
+        return user_dict
+    raise HTTPException(
+		status_code=404, detail=f'User not found'
+	)
+
+@app.post('/signin')
+async def signin(user:User):
+    user_dict = user.dict()
+    user_found = False
+    for user_item in data2['user']:
+        if user_item['user_id'] == user_dict['user_id']:
+            user_found = True
+            if verify_password(user_dict['password'], user_item['password']):
+                token_data = {"sub": user_item['user_id']}
+                token = jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)
+                return {"token": token, "message": "Signin successful"}
+            else:
+                raise HTTPException(status_code=401, detail="Invalid credentials")
 
 @app.get('/token/{user_id}')
 async def return_token(user_id: str):
