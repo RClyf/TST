@@ -1,6 +1,10 @@
 # TST
 Routing API Ayo Ke Bali:
 
+/register (POST) → mendaftar pengguna baru dengan format “user_id” dan “password”. “Password” akan di-hash terlebih dahulu dengan metode bcrypt
+
+/signin (POST) → melakukan sign in dengan format user_id dan password yang akan menghasilkan return berupa access token
+
 /destination (GET) → mendapatkan seluruh list data destinasi yang ada
 
 /destination (POST) → menambahkan destinasi baru dengan field “id”, “name”, “category”, dan “location”
