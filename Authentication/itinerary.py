@@ -89,7 +89,7 @@ async def register(user:User):
             
         return user_dict
     raise HTTPException(
-		status_code=404, detail=f'User not found'
+		status_code=404, detail=f'Registrasi Gagal'
 	)
 
 @app.post('/signin')
@@ -104,7 +104,10 @@ async def signin(user:User):
                 token = jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)
                 return {"token": token, "message": "Signin successful"}
             else:
-                raise HTTPException(status_code=401, detail="Invalid credentials")
+                raise HTTPException(status_code=404, detail="Password Anda Salah")
+    raise HTTPException(
+		status_code=404, detail=f'User Tidak Ditemukan'
+	)
 
 @app.get('/token/{user_id}')
 async def return_token(user_id: str):
