@@ -1,0 +1,36 @@
+{
+    "itinerary": [
+        {
+            "id": 1,
+            "user_id": "12345",
+            "start_date": "2023-11-19",
+            "end_date": "2023-11-20",
+            "accommodation": "Hotel Santika Seminyak",
+            "destination": [
+                1,
+                2
+            ]
+        },
+        {
+            "id": 2,
+            "user_id": "12345",
+            "start_date": "2023-11-21",
+            "end_date": "2023-11-25",
+            "accommodation": "Hotel Grand Ina Bali",
+            "destination": [
+                3
+            ]
+        },
+        {
+            "id": 3,
+            "user_id": "23456",
+            "start_date": "2023-11-21",
+            "end_date": "2023-11-24",
+            "accommodation": "Hotel Hard Rock Bali",
+            "destination": [
+                6,
+                8
+            ]
+        }
+    ]
+}
