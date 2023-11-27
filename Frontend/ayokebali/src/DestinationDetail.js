@@ -35,7 +35,8 @@ const DestinationDetail = () => {
       <h2>Detail Destinasi</h2>
       {destination ? (
         <div>
-          <p><strong>{destination.name}</strong> ({destination.category})</p>
+          <p><strong>{destination.name}</strong> ({destination.location})</p>
+          <p>Category: {destination.category}</p>
           <p>Latitude: {destination.latitude}</p>
           <p>Longitude: {destination.longitude}</p>
           <p>Average Time: {destination.avg_time} minutes</p>

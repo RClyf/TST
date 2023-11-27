@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   const [token, setToken] = useState('');
   const [destinations, setDestinations] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     // Ambil token dari sessionStorage atau localStorage saat komponen dipasang
@@ -37,6 +38,19 @@ const Home = () => {
     return shuffled;
   };
 
+  // Fungsi untuk melakukan pencarian berdasarkan nama dan lokasi
+  const filterDestinations = (destination) => {
+    return (
+      destination.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      destination.location.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
+
+  // Fungsi untuk menangani perubahan input pencarian
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <div>
       <h2>Home</h2>
@@ -45,14 +59,30 @@ const Home = () => {
           <p>Selamat datang di Ayo Ke Bali!</p>
 
           <h3>Rekomendasi Destinasi:</h3>
-          <ul>
-            {destinations.map(destination => (
-              <li key={destination.destination_id}>
-                <Link to={`/destination/${destination.destination_id}`}><strong>{destination.name}</strong></Link>({destination.category})
-                <br/><br/>
-              </li>
-            ))}
-          </ul>
+          
+          {/* Input untuk melakukan pencarian */}
+          <input
+            type="text"
+            placeholder="Cari nama atau lokasi destinasi..."
+            value={searchTerm}
+            onChange={handleSearchChange} 
+            style={{ width: '500px' }}
+          />
+          {destinations ? (
+            <ul>
+              {destinations.filter(filterDestinations).map(destination => (
+                <li key={destination.destination_id}>
+                  <Link to={`/destination/${destination.destination_id}`}>
+                    <strong>{destination.name}</strong>
+                  </Link>
+                  {' '}({destination.location})
+                  <br/><br/>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       ) : (
         <p>Anda tidak memiliki akses. Silakan login terlebih dahulu.</p>

@@ -10,6 +10,7 @@ class Destination(BaseModel):
     destination_id: int
     name: str
     category: str
+    location: str
     latitude: float
     longitude: float 
     avg_time: int
