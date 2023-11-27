@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const SignIn = () => {
+const SignIn = ({ history }) => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -27,24 +29,27 @@ const SignIn = () => {
 
       // Handle respons dari API sesuai kebutuhan aplikasi Anda
       if (response.data.token) {
-        alert('Login berhasil!');
+        // Simpan token dalam sessionStorage atau localStorage
+        sessionStorage.setItem('token', response.data.token);
+        
+        // Redirect ke halaman home
+        navigate('/home');
       } else {
         console.log(response.data);
         alert('Login gagal. Coba lagi.');
       }
     } catch (error) {
       if (error.response) {
-        // Respons diterima dari server, tetapi tidak dalam kisaran status 2xx
         if (error.response.status === 422) {
           setError('Kombinasi username dan password tidak valid.');
         } else {
+          console.log(error);
           setError('Terjadi kesalahan. Silakan coba lagi.');
         }
       } else if (error.request) {
-        // Permintaan dikirimkan tetapi tidak menerima respons atau terjadi kesalahan lain
         setError('Terjadi kesalahan dalam mengirim permintaan.');
       } else {
-        // Kesalahan lainnya
+        console.log(error);
         setError('Terjadi kesalahan. Silakan coba lagi.');
       }
     }

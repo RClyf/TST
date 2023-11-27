@@ -100,7 +100,7 @@ async def signin(user:User):
         if user_item['user_id'] == user_dict['user_id']:
             user_found = True
             if verify_password(user_dict['password'], user_item['password']):
-                token_data = {"sub": user_item['user_id']}
+                token_data = {"sub": user_item['user_id']}  
                 token = jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)
                 return {"token": token, "message": "Signin successful"}
             else:

@@ -1,16 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
-import SignIn from './SignIn'; // Impor komponen SignIn
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SignIn from './SignIn';
+import Home from './Home';
+import DestinationDetail from './DestinationDetail';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* Hapus konten yang lama dan gantikan dengan komponen SignIn */}
-        <SignIn />
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<SignIn />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/destination/:id" element={<DestinationDetail />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
+
