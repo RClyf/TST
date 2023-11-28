@@ -1,11 +1,11 @@
 {
     "user": [
         {
-            "user_id": "Admin123",
+            "username": "Admin123",
             "password": "$2b$12$p2qRGN6Q0DvIvJFkI9M4Mup8ECsXrxPVz1O7566VIEWLaT9Cq0hdW"
         },
         {
-            "user_id": "12345",
+            "username": "12345",
             "password": "$2b$12$i8h6nl542JT/O6RKQO9PguyeRYpNnv0hXmanX5KAeXTKwkZm4XD5e"
         }
     ]

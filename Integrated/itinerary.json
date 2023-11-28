@@ -3,34 +3,35 @@
         {
             "id": 1,
             "user_id": "12345",
-            "start_date": "2023-11-19",
-            "end_date": "2023-11-20",
-            "accommodation": "Hotel Santika Seminyak",
+            "lama_kunjungan": 2,
+            "accommodation": "3 star",
             "destination": [
                 1,
                 2
-            ]
+            ],
+            "estimasi_budget": 2500000
         },
         {
             "id": 2,
-            "user_id": "12345",
-            "start_date": "2023-11-21",
-            "end_date": "2023-11-25",
-            "accommodation": "Hotel Grand Ina Bali",
-            "destination": [
-                3
-            ]
-        },
-        {
-            "id": 3,
             "user_id": "23456",
-            "start_date": "2023-11-21",
-            "end_date": "2023-11-24",
-            "accommodation": "Hotel Hard Rock Bali",
+            "lama_kunjungan": 4,
+            "accommodation": "4 star",
             "destination": [
                 6,
                 8
-            ]
+            ],
+            "estimasi_budget": 5000000
+        },
+        {
+            "id": 3,
+            "user_id": "12345",
+            "lama_kunjungan": 3,
+            "accommodation": "4 star",
+            "destination": [
+                2,
+                4
+            ],
+            "estimasi_budget": 4500000
         }
     ]
 }
