@@ -3,19 +3,23 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [token, setToken] = useState('');
+  const [token1, setToken1] = useState('');
+  const [token2, setToken2] = useState('');
   const [destinations, setDestinations] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     // Ambil token dari sessionStorage atau localStorage saat komponen dipasang
-    const storedToken = sessionStorage.getItem('token');
-    setToken(storedToken || ''); // Jika tidak ada token, gunakan string kosong
+    const storedToken1 = sessionStorage.getItem('token1');
+    const storedToken2 = sessionStorage.getItem('token2');
+    
+    setToken1(storedToken1 || ''); // Jika tidak ada token, gunakan string kosong
+    setToken2(storedToken2 || ''); // Jika tidak ada token, gunakan string kosong
 
     // Ambil data destinasi dari API saat komponen dipasang
     axios.get('https://ayokebalitst.azurewebsites.net/destination', {
       headers: {
-        Authorization: `Bearer ${token}` // Menyertakan token dalam header Authorization
+        Authorization: `Bearer ${token1}` // Menggunakan token1 dalam header Authorization
       }
     })
       .then(response => {
@@ -26,7 +30,7 @@ const Home = () => {
       .catch(error => {
         console.error('Error fetching destinations:', error);
       });
-  }, [token]); // Perubahan token akan memicu pengambilan data ulang
+  }, [token1]); // Perubahan token1 akan memicu pengambilan data ulang
 
   // Fungsi untuk mengacak array
   const shuffleArray = (array) => {
@@ -54,7 +58,7 @@ const Home = () => {
   return (
     <div>
       <h2>Home</h2>
-      {token ? (
+      {token1 ? (
         <div>
           <p>Selamat datang di Ayo Ke Bali!</p>
 
