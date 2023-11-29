@@ -5,6 +5,8 @@
             "name": "Warung Bigul Pak Malen",
             "category": "Restaurant",
             "location": "Seminyak",
+            "latitude": -8.6848,
+            "longitude": 115.1689,
             "perkiraan_biaya": 50000
         },
         {
@@ -12,6 +14,8 @@
             "name": "Atlas Beach Club",
             "category": "Beach Club",
             "location": "Canggu",
+            "latitude": -8.6654,
+            "longitude": 115.1385,
             "perkiraan_biaya": 300000
         },
         {
@@ -19,6 +23,8 @@
             "name": "Waterbom Bali",
             "category": "Waterbom",
             "location": "Kuta",
+            "latitude": -8.7282,
+            "longitude": 115.1694,
             "perkiraan_biaya": 400000
         },
         {
@@ -26,6 +32,8 @@
             "name": "ATV Bali",
             "category": "Adventure",
             "location": "Ubud",
+            "latitude": -8.5608,
+            "longitude": 115.2529,
             "perkiraan_biaya": 250000
         },
         {
@@ -33,6 +41,8 @@
             "name": "Potato Head Bali",
             "category": "Beach Club",
             "location": "Seminyak",
+            "latitude": -8.6794,
+            "longitude": 115.1499,
             "perkiraan_biaya": 150000
         },
         {
@@ -40,6 +50,8 @@
             "name": "Pantai Kuta",
             "category": "Pantai",
             "location": "Kuta",
+            "latitude": -8.7185,
+            "longitude": 115.1686,
             "perkiraan_biaya": 0
         },
         {
@@ -47,6 +59,8 @@
             "name": "Pantai Melasti",
             "category": "Pantai",
             "location": "Ungasan",
+            "latitude": -8.8483,
+            "longitude": 115.1632,
             "perkiraan_biaya": 15000
         },
         {
@@ -54,6 +68,8 @@
             "name": "Beachwalk Shopping Center",
             "category": "Mall",
             "location": "Kuta",
+            "latitude": -8.7169,
+            "longitude": 115.1688,
             "perkiraan_biaya": 0
         }
     ]

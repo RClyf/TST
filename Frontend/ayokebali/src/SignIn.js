@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import querystring from 'querystring'; // Import library querystring
+import querystring from 'querystring';
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+} from '@chakra-ui/react' 
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -84,14 +90,14 @@ const SignIn = () => {
     <div>
       <h2>Sign In</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
+        <FormControl>
+          <FormLabel>Username</FormLabel>
           <input type="text" value={username} onChange={handleUsernameChange} required />
-        </div>
-        <div>
-          <label>Password:</label>
+        </FormControl>
+        <FormControl>
+          <FormLabel>Password:</FormLabel>
           <input type="password" value={password} onChange={handlePasswordChange} required />
-        </div>
+        </FormControl>
         <button type="submit">Sign In</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
