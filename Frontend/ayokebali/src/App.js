@@ -12,7 +12,7 @@ const App = () => {
   return (
     <ChakraProvider>
       <CSSReset />
-      <Box textAlign="center" fontSize="xl">
+      <Box textAlign="center" fontSize="xl" bg="D6E8E0" minHeight="100vh">
         <Router>
           <Routes>
             <Route path="/" element={<SignIn />} />

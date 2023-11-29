@@ -71,6 +71,159 @@
             "latitude": -8.7169,
             "longitude": 115.1688,
             "perkiraan_biaya": 0
+        },
+        {
+            "destination_id": 9,
+            "name": "Pura Tanah Lot",
+            "category": "Pura",
+            "location": "Beraban",
+            "latitude": -8.6212,
+            "longitude": 115.0868,
+            "perkiraan_biaya": 20000
+        },
+        {
+            "destination_id": 10,
+            "name": "Pura Luhur Uluwatu",
+            "category": "Pura",
+            "location": "Kuta Selatan",
+            "latitude": -8.8291,
+            "longitude": 115.0849,
+            "perkiraan_biaya": 200000
+        },
+        {
+            "destination_id": 11,
+            "name": "Taman Budaya Garuda Wisnu Kencana (GWK)",
+            "category": "Objek Wisata",
+            "location": "Ungasan",
+            "latitude": -8.8104,
+            "longitude": 115.1676,
+            "perkiraan_biaya": 125000
+        },
+        {
+            "destination_id": 12,
+            "name": "Teras Sawah Tegalalang",
+            "category": "Objek Wisata",
+            "location": "Tegalalang",
+            "latitude": -8.4317,
+            "longitude": 115.2793,
+            "perkiraan_biaya": 15000
+        },
+        {
+            "destination_id": 13,
+            "name": "Pantai Nusa Dua",
+            "category": "Pantai",
+            "location": "Nusa Dua",
+            "latitude": -8.7958,
+            "longitude": 115.2328,
+            "perkiraan_biaya": 10000
+        },
+        {
+            "destination_id": 14,
+            "name": "Pantai Pandawa",
+            "category": "Pantai",
+            "location": "Kuta Selatan",
+            "latitude": -8.8453,
+            "longitude": 115.1871,
+            "perkiraan_biaya": 15000
+        },
+        {
+            "destination_id": 15,
+            "name": "Jimbaran Bay Seafood",
+            "category": "Restaurant",
+            "location": "Jimbaran",
+            "latitude": -8.7594,
+            "longitude": 115.1694,
+            "perkiraan_biaya": 200000
+        },
+        {
+            "destination_id": 16,
+            "name": "Warung Mak Beng",
+            "category": "Restaurant",
+            "location": "Sanur",
+            "latitude": -8.6736,
+            "longitude": 115.2630,
+            "perkiraan_biaya": 60000
+        },
+        {
+            "destination_id": 17,
+            "name": "Warung Mak Beng",
+            "category": "Restaurant",
+            "location": "Kerobokan",
+            "latitude": -8.6707,
+            "longitude": 115.1611,
+            "perkiraan_biaya": 75000
+        },
+        {
+            "destination_id": 18,
+            "name": "Warung Italia",
+            "category": "Restaurant",
+            "location": "Kerobokan",
+            "latitude": -8.6707,
+            "longitude": 115.1611,
+            "perkiraan_biaya": 75000
+        },
+        {
+            "destination_id": 19,
+            "name": "Warung Laota",
+            "category": "Restaurant",
+            "location": "Kuta",
+            "latitude": -8.7335,
+            "longitude": 115.1779,
+            "perkiraan_biaya": 75000
+        },
+        {
+            "destination_id": 20,
+            "name": "Rumah Makan Babi Guling Karya Rebo",
+            "category": "Restaurant",
+            "location": "Kuta",
+            "latitude": -8.7608,
+            "longitude": 115.1761,
+            "perkiraan_biaya": 50000
+        },
+        {
+            "destination_id": 21,
+            "name": "BAKED.",
+            "category": "Restaurant",
+            "location": "Canggu",
+            "latitude": -8.6583,
+            "longitude": 115.1403,
+            "perkiraan_biaya": 100000
+        },
+        {
+            "destination_id": 22,
+            "name": "Kedaton",
+            "category": "Restaurant",
+            "location": "Kuta",
+            "latitude": -8.7176,
+            "longitude": 115.1808,
+            "perkiraan_biaya": 40000
+        },
+        {
+            "destination_id": 23,
+            "name": "Made's Warung",
+            "category": "Restaurant",
+            "location": "Seminyak",
+            "latitude": -8.6894,
+            "longitude": 115.1678,
+            "perkiraan_biaya": 100000
+        },
+        {
+            "destination_id": 24,
+            "name": "Gusto Gelato",
+            "category": "Cafe",
+            "location": "Kerobokan",
+            "latitude": -8.6798,
+            "longitude": 115.1676,
+            "perkiraan_biaya": 50000
+        },
+        {
+            "destination_id": 25,
+            "name": "Naughty Nuri's Warung",
+            "category": "Cafe",
+            "location": "Seminyak",
+            "latitude": -8.6776,
+            "longitude": 115.1676,
+            "perkiraan_biaya": 200000
         }
     ]
 }

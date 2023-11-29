@@ -5,20 +5,20 @@ import { useParams } from 'react-router-dom';
 const DestinationDetail = () => {
   const { id } = useParams();
   const [destination, setDestination] = useState(null);
-  const [token, setToken] = useState('');
+  const [token1, setToken1] = useState('');
 
   useEffect(() => {
     // Ambil token dari sessionStorage atau localStorage saat komponen dipasang
-    const storedToken = sessionStorage.getItem('token') || localStorage.getItem('token');
-    setToken(storedToken || ''); // Jika tidak ada token, gunakan string kosong
+    const storedToken1 = sessionStorage.getItem('token1');
+    setToken1(storedToken1 || ''); // Jika tidak ada token, gunakan string kosong
   }, []);
 
   useEffect(() => {
     // Ambil data destinasi berdasarkan ID dari API saat komponen dipasang
-    if (token && id) {
+    if (token1 && id) {
       axios.get(`https://ayokebalitst.azurewebsites.net/destination/${id}`, {
         headers: {
-          Authorization: `Bearer ${token}` // Menyertakan token dalam header Authorization
+          Authorization: `Bearer ${token1}` // Menyertakan token dalam header Authorization
         }
       })
         .then(response => {
@@ -28,7 +28,7 @@ const DestinationDetail = () => {
           console.error('Error fetching destination details:', error);
         });
     }
-  }, [id, token]);
+  }, [id, token1]);
 
   return (
     <div>
@@ -39,8 +39,7 @@ const DestinationDetail = () => {
           <p>Category: {destination.category}</p>
           <p>Latitude: {destination.latitude}</p>
           <p>Longitude: {destination.longitude}</p>
-          <p>Average Time: {destination.avg_time} minutes</p>
-          <p>Count: {destination.count}</p>
+          <p>Estimasi Biaya: {destination.perkiraan_biaya}</p>
         </div>
       ) : (
         <p>Loading...</p>

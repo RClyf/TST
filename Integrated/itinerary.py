@@ -12,6 +12,8 @@ class Destination(BaseModel):
     name: str
     category: str
     location: str
+    latitude: float
+    longitude: float
     perkiraan_biaya: int
 
 class Itinerary(BaseModel):
