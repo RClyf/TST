@@ -1,20 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { 
+  SimpleGrid, 
+  Box, 
+  Card, 
+  CardHeader, 
+  CardBody,
+  CardFooter, 
+  Text,
+  Button,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Center,
+  Flex,
+  Heading
+} from '@chakra-ui/react';
+import { Search2Icon } from "@chakra-ui/icons";
 
 const Home = () => {
   const [token1, setToken1] = useState('');
-  const [token2, setToken2] = useState('');
   const [destinations, setDestinations] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     // Ambil token dari sessionStorage atau localStorage saat komponen dipasang
     const storedToken1 = sessionStorage.getItem('token1');
-    const storedToken2 = sessionStorage.getItem('token2');
-    
     setToken1(storedToken1 || ''); // Jika tidak ada token, gunakan string kosong
-    setToken2(storedToken2 || ''); // Jika tidak ada token, gunakan string kosong
 
     // Ambil data destinasi dari API saat komponen dipasang
     axios.get('https://ayokebalitst.azurewebsites.net/destination', {
@@ -56,43 +69,54 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h2>Home</h2>
+    <Flex align={'center'} justify={'center'} textAlign="center" mt={10} mx={10}>
       {token1 ? (
-        <div>
-          <p>Selamat datang di Ayo Ke Bali!</p>
-
-          <h3>Rekomendasi Destinasi:</h3>
-          
+        <Box margin="auto">
+          <Heading fontSize={'4xl'} mb={4}>Rekomendasi Destinasi</Heading>
           {/* Input untuk melakukan pencarian */}
-          <input
-            type="text"
-            placeholder="Cari nama atau lokasi destinasi..."
-            value={searchTerm}
-            onChange={handleSearchChange} 
-            style={{ width: '500px' }}
-          />
+          <InputGroup borderRadius={5} size="sm">
+            <InputLeftElement
+              pointerEvents="none"
+              children={<Search2Icon color="gray.600" />}
+            />
+            <Input
+              type="text"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              placeholder="Cari nama atau lokasi destinasi..."
+              border="1px solid #949494"
+            />
+          </InputGroup>
+
           {destinations ? (
-            <ul>
+            <SimpleGrid spacing={4} mt={5} columns={[1, null, 3]}>
               {destinations.filter(filterDestinations).map(destination => (
-                <li key={destination.destination_id}>
-                  <Link to={`/destination/${destination.destination_id}`}>
-                    <strong>{destination.name}</strong>
-                  </Link>
-                  {' '}({destination.location})
-                  <br/><br/>
-                </li>
+                <Card key={destination.destination_id}>
+                  <CardHeader>
+                    <Link to={`/destination/${destination.destination_id}`}>
+                      <strong>{destination.name}</strong>
+                    </Link>
+                  </CardHeader>
+                  <CardBody>
+                    {destination.location}
+                  </CardBody>
+                  <CardFooter>
+                    <Button as={Link} to={`/destination/${destination.destination_id}`}>View Details</Button>
+                  </CardFooter>
+                </Card>
               ))}
-            </ul>
+            </SimpleGrid>
           ) : (
             <p>Loading...</p>
           )}
-        </div>
+        </Box>
       ) : (
         <p>Anda tidak memiliki akses. Silakan login terlebih dahulu.</p>
       )}
-    </div>
-  );
+    </Flex>
+
+
+  )
 };
 
 export default Home;
