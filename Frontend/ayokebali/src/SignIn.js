@@ -63,6 +63,7 @@ const SignIn = () => {
 
         sessionStorage.setItem('token1', token1);
         sessionStorage.setItem('token2', token2);
+        sessionStorage.setItem('username', username);
 
         navigate('/home');
       } else {
