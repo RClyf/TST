@@ -2,7 +2,8 @@
     "itinerary": [
         {
             "id": 1,
-            "user_id": "12345",
+            "username": "12345",
+            "date": "01-12-2023",
             "lama_kunjungan": 2,
             "accommodation": "3 star",
             "destination": [
@@ -13,7 +14,8 @@
         },
         {
             "id": 2,
-            "user_id": "23456",
+            "username": "23456",
+            "date": "12-12-2023",
             "lama_kunjungan": 4,
             "accommodation": "4 star",
             "destination": [
@@ -24,7 +26,8 @@
         },
         {
             "id": 3,
-            "user_id": "12345",
+            "username": "12345",
+            "date": "01-01-2024",
             "lama_kunjungan": 3,
             "accommodation": "4 star",
             "destination": [

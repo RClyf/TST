@@ -19,6 +19,7 @@ class Destination(BaseModel):
 class Itinerary(BaseModel):
     id: int
     username: str
+    date: str
     lama_kunjungan: int
     accommodation: str
     destination: List[int]
@@ -106,18 +107,12 @@ async def signin(user:User):
             if verify_password(user_dict['password'], user_item['password']):
                 token_data = {"sub": user_item['username']}
                 token = jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)
-                return {"token": token, "message": "Signin successful"}
+                return {"token": token, "message": "Signin successful", "username": user_item['username']}
             else:
                 raise HTTPException(status_code=404, detail="Password Anda Salah")
     raise HTTPException(
 		status_code=404, detail=f'User Tidak Ditemukan'
 	)
-
-@app.get('/token/{username}')
-async def return_token(username: str):
-    token_data = {"sub": username}
-    token = jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)
-    return {"token": token}
 
 @app.get('/destination', dependencies=[Depends(get_current_user)])
 async def read_all_destination():

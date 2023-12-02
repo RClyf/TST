@@ -7,6 +7,7 @@ import SignIn from './SignIn';
 import Register from './Register';
 import Home from './Home';
 import DestinationDetail from './DestinationDetail';
+import Itinerary from './Itinerary';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/home" element={<Home />} />
             <Route path="/destination/:id" element={<DestinationDetail />} />
+            <Route path="/itinerary" element={<Itinerary />} />
           </Routes>
         </Router>
       </Box>
