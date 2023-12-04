@@ -30,7 +30,7 @@ import {
 } from '@chakra-ui/react';
 import { Search2Icon, AddIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
-const Links = [ 'Home', 'Itinerary', 'Budget'];
+const Links = [ 'Home', 'Itinerary', 'Loan'];
 
 const NavLink = ({ children }) => (
   <Button as={Link} to={'#'}>
@@ -175,6 +175,11 @@ const Home = () => {
       });
   };
 
+  const SignOut = () => {
+    sessionStorage.setItem('token1', '');
+    sessionStorage.setItem('token2', '');
+  };
+
   return (
     <Box>
       {token1 ? (
@@ -215,7 +220,7 @@ const Home = () => {
                 <MenuList>
                   <Text>Hello, {username}</Text>
                   <MenuDivider />
-                  <MenuItem>Sign Out</MenuItem>
+                  <Link to="/" onClick={SignOut}>Sign Out</Link>
                 </MenuList>
               </Menu>
             </Flex>
